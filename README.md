@@ -1,45 +1,24 @@
-# Airflow Data Enrichment Using LocationIQ
+# Airflow Data Enrichment with LocationIQ
 
-It's a simple demo to show data enrichment taking advantage data from LocationIQ API
+It's a simple demo to show how data enrichment using data from LocationIQ API
 
-## Files Modified
+## Data Input
 
-These are files that I modified from the original source
+A simple json data input provided in directory **data/int_input**
 
-### Simple modification
+## Data Output
 
-- docker-compose.yaml
-
-### Heavily Modified
-
-- .env (still original. Please refer to google-drive link in the replied email)
-- src/integrations/geocode_util.py
-- src/transformers/address_transformer.py
-- src/utils/reader.py
-- src/utils/writer.py
-
-## Files Created
-
-These are files (or directories) that I created (doesn't exist on the original source)
-
-- dags, logs, plugins (directory)
-- dags/bci_interview_dag.py
-- src/\_\_init\_\_.py
-
-## File Generated
-
-Once the **bci_interview_dag** dag manually run. It should generates a json file on directory **data/int_test_output**
-
-- data/int_test_output/output_sample.json
+Once the dag manually run, it should generates a json file on directory **data/int_output**
 
 ## Build & Run
 
-Edit the .env file to get API key
+Go to [LocationIQ](https://locationiq.com), do sign up or login if you already have account and get the API key
+
+Edit the .env and set LOCATIONIQ_API_KEY as your API key above
 
 ```
-git clone https://github.com/jimbas/bci-interview
-cd bci-interview
-# replace .env with the one in google-drive link
+git clone https://github.com/jimbas/data-enrich-locationiq.git
+cd data-enrich-locationiq
 docker-compose up -d
 docker-compose logs -f
 ```
